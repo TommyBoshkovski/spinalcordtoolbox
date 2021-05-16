@@ -56,7 +56,6 @@ $(document).ready(function(){
   });
 
   $('html').keydown( function(evt) {
-    evt.preventDefault();  // prevent from scrolling
     var obj = $('#table tr.active');
     // Arrow down: next subject (or j)
     if (evt.which == 40 || evt.which == 74) {
@@ -66,6 +65,7 @@ $(document).ready(function(){
       else {
         obj.next().click();
       }
+      evt.preventDefault();  // prevent from scrolling
       newScroll(obj)
     }
     // Arrow up: previous subject (or k)
@@ -76,6 +76,7 @@ $(document).ready(function(){
       else {
         obj.prev().click();
       }
+      evt.preventDefault();  // prevent from scrolling
       newScroll(obj)
     }
     // f key (mark "failing" subjects using check, X, !)
@@ -98,6 +99,7 @@ $(document).ready(function(){
       hideColumns();
       document.getElementById("table").rows[0].classList.remove("active");
       document.getElementById("table").rows[parseInt(index)+1].className="active";
+      document.getElementById("table").rows[parseInt(index)+1].scrollIntoView()
     }
   });
 
